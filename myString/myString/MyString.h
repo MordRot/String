@@ -53,8 +53,7 @@ public:
 	erases the string
 	*/
 	void Clear();
-
-
+	
 private:
 	// pointer to the string
 	char* m_str;

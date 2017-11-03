@@ -15,7 +15,6 @@ MyString::~MyString()
 	}
 }
 
-
 char* MyString::GetStr()
 {
 	return m_str;
@@ -103,6 +102,5 @@ void MyString::Clear()
 		delete m_str;
 		m_str = NULL;
 		m_size = 0;
-	}
-	
+	}	
 }

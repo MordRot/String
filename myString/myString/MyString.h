@@ -3,7 +3,9 @@
 class MyString
 {
 public:
+	MyString();
 	MyString(char* newStr);
+	MyString(const MyString &newStr);
 	~MyString();
 	
 	/*
@@ -21,12 +23,14 @@ public:
 	Input: the new string
 	*/
 	void Assign(char* newStr);
+	void Assign(MyString newStr);
 
 	/*
 	appends new string to the old string
 	Input: new string
 	*/
 	void Append(char* newStr);
+	void Append(MyString newStr);
 
 	/*
 	Input: index of the charactor to return.

@@ -1,10 +1,23 @@
 #include "MyString.h"
 
+MyString::MyString()
+{
+	m_str = NULL;
+	m_size = 0;
+}
+
 MyString::MyString(char* newStr)
 {
 	m_str = new char[strlen(newStr) + 1];
 	strcpy_s(m_str, sizeof m_str, newStr);
 	m_size = strlen(newStr) + 1;
+}
+
+MyString::MyString(const MyString &newStr)
+{
+	m_str = new char[strlen(newStr.m_str) + 1];
+	strcpy_s(m_str, sizeof m_str, newStr.m_str);
+	m_size = strlen(newStr.m_str) + 1;
 }
 
 MyString::~MyString()
@@ -40,6 +53,21 @@ void MyString::Assign(char* newStr)
 	}
 }
 
+void MyString::Assign(MyString newStr)
+{
+	if (strlen(newStr.m_str) < m_size)
+	{
+		strcpy_s(m_str, sizeof m_str + 1, newStr.m_str);
+	}
+	else
+	{
+		delete m_str;
+		m_str = new char[strlen(newStr.m_str) + 1];
+		strcpy_s(m_str, sizeof m_str, newStr.m_str);
+		m_size = strlen(newStr.m_str) + 1;
+	}
+}
+
 void MyString::Append(char* newStr)
 {
 	if (strlen(m_str) + strlen(newStr) < m_size)
@@ -51,6 +79,23 @@ void MyString::Append(char* newStr)
 		char* tmp = new char[strlen(m_str) + strlen(newStr) + 1];
 		strcpy_s(tmp, sizeof m_str, m_str);
 		strcat_s(tmp, sizeof tmp, newStr);
+		delete m_str;
+		m_str = tmp;
+		m_size = strlen(m_str) + 1;
+	}
+}
+
+void MyString::Append(MyString newStr)
+{
+	if (strlen(m_str) + strlen(newStr.m_str) < m_size)
+	{
+		strcat_s(m_str, sizeof m_str, newStr.m_str);
+	}
+	else
+	{
+		char* tmp = new char[strlen(m_str) + strlen(newStr.m_str) + 1];
+		strcpy_s(tmp, sizeof m_str, m_str);
+		strcat_s(tmp, sizeof tmp, newStr.m_str);
 		delete m_str;
 		m_str = tmp;
 		m_size = strlen(m_str) + 1;

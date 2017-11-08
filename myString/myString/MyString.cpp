@@ -53,7 +53,7 @@ void MyString::Assign(char* newStr)
 	}
 }
 
-void MyString::Assign(MyString newStr)
+void MyString::Assign(MyString &newStr)
 {
 	if (strlen(newStr.m_str) < m_size)
 	{
@@ -85,7 +85,7 @@ void MyString::Append(char* newStr)
 	}
 }
 
-void MyString::Append(MyString newStr)
+void MyString::Append(MyString &newStr)
 {
 	if (strlen(m_str) + strlen(newStr.m_str) < m_size)
 	{
@@ -102,7 +102,7 @@ void MyString::Append(MyString newStr)
 	}
 }
 
-char MyString::CharAt(unsigned int index)
+char MyString::CharAt(unsigned int &index)
 {
 	char ans = NULL;
 	if (index < strlen(m_str))
@@ -112,7 +112,7 @@ char MyString::CharAt(unsigned int index)
 	return ans;
 }
 
-int MyString::Compare(MyString rhs, MyString lhs)
+int MyString::Compare(MyString &rhs, MyString &lhs)
 {
 	int ans = 0;
 	if (rhs.m_str != NULL && lhs.m_str != NULL)

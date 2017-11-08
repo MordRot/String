@@ -23,20 +23,20 @@ public:
 	Input: the new string
 	*/
 	void Assign(char* newStr);
-	void Assign(MyString newStr);
+	void Assign(MyString &newStr);
 
 	/*
 	appends new string to the old string
 	Input: new string
 	*/
 	void Append(char* newStr);
-	void Append(MyString newStr);
+	void Append(MyString &newStr);
 
 	/*
 	Input: index of the charactor to return.
 	Output: the charactor in the index place. Or NULL if the index is bigger then the size of the string.
 	*/
-	char CharAt(unsigned int index);
+	char CharAt(unsigned int &index);
 
 	/*
 	copmare between to strings.
@@ -45,7 +45,7 @@ public:
 			-1 if the right string is biggger.
 			0 if there are equal.
 	*/
-	static int Compare(MyString rh, MyString lh);
+	static int Compare(MyString &rh, MyString &lh);
 
 	/*
 	Output: True if the string is NULL.
